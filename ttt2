@@ -8,7 +8,7 @@ void tictactoegame()
 	display();
 	cout << "\n";
 
-	string playerX;
+	string playerX = "Casper the ghost";
 	string pOneSymbol = "X";
 	string pTwoSymbol = "O";
 	string currentSymbol;
@@ -177,7 +177,7 @@ void tictactoegame()
 		}
 		
 
-
+		// If player 1 connects 3 side by side boxes
 		if (position[1] == pOneSymbol && position[2] == pOneSymbol && position[3] == pOneSymbol)
 		{
 			position[0] = "";
@@ -219,6 +219,7 @@ void tictactoegame()
 			playerX = "Player 1";
 		}
 
+		// If player 2 connects 3 side by side boxes
 		if (position[1] == pTwoSymbol && position[2] == pTwoSymbol && position[3] == pTwoSymbol)
 		{
 			position[0] = "";
@@ -259,6 +260,11 @@ void tictactoegame()
 			position[0] = "";
 			playerX = "Player 2";
 		}
+		// If all positions are filled and no one won
+		if (position[1] != " " && position[2] != " " && position[3] != " " && position[4] != " " && position[5] != " " && position[6] != " " && position[7] != " " && position[8] != " " && position[9] != " ")
+		{
+			position[0] = "";
+		}
 	}
 
 	cout << "\n\n\n";
@@ -268,5 +274,5 @@ void tictactoegame()
 
 	display(position);
 	cout << "\n";
-	cout << "Game over. Player " << playerX << " wins!\n";
+	cout << "Game over. " << playerX << " wins!\n";
 }
