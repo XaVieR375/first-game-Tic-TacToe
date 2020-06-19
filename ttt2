@@ -10,7 +10,7 @@ void tictactoegame()
 
 	string playerX = "Casper the ghost";
 	string pOneSymbol = "X";
-	string pTwoSymbol = "O";
+	string pTwoSymbol = "'X' or 'O'";
 	string currentSymbol;
 	int playerPosition = 0;
 	vector<string> position = { " ", " ", " ", " ", " ", " ", " ", " ", " ", " " };
@@ -18,12 +18,15 @@ void tictactoegame()
 	bool positionError = false;
 
 	display(position);
-	cout << "\nPlayer one, choose a letter, preferably '" << pOneSymbol << " or '" << pTwoSymbol << "': ";
+	cout << "\nPlayer one, choose a letter, preferably " << "'X' or 'O': ";
 	cin >> pOneSymbol;
 	pOneSymbol = pOneSymbol[0];
 	pOneSymbol = pOneSymbol == "x" ? "X" : pOneSymbol;	// Shorthand if pOne == "x", pOne == "X" capital X, else pOne == pOne
 	pOneSymbol = pOneSymbol == "o" ? "O" : pOneSymbol;
-	cout << "\nPlayer two, choose a letter, preferably '" << pTwoSymbol << "': ";
+	// If p1 chose X, p2 recomendation is O and vice versa
+	pTwoSymbol = pOneSymbol == "X" ? "O" : pTwoSymbol;
+	pTwoSymbol = pOneSymbol == "O" ? "X" : pTwoSymbol;
+	cout << "\nPlayer two, choose a letter, preferably " << pTwoSymbol << ": ";
 	cin >> pTwoSymbol;
 	pTwoSymbol = pTwoSymbol[0];
 	pTwoSymbol = pTwoSymbol == "x" ? "X" : pTwoSymbol;
@@ -52,7 +55,7 @@ void tictactoegame()
 		{
 			if (positionError == true)
 			{
-				cout << "Error, that position is in use or is not a numeric number. Player 1, try again: ";
+				cout << "Error, that position is invalid, in use, or is not a numeric number. Player 1, try again: ";
 				positionError = false;
 			}
 			else
@@ -71,7 +74,7 @@ void tictactoegame()
 		{
 			if (positionError == true)
 			{
-				cout << "Error, that position is in use or is not a numeric number. Player 2, try again: ";
+				cout << "Error, that position is invalid, in use, or is not a numeric number. Player 2, try again: ";
 				positionError = false;
 			}
 			else
